@@ -15,9 +15,11 @@ class Program
             Console.WriteLine("Welcome to the inventory system! \n Choose 1 to add a product. \n Choose 2 to view all products. \n choose 3 to search for a product by Id. \n Choose 4 to update an existing product. \n Choose 5 to delete a product. \n Choose 6 to exit the program");
             int userInput;
             bool isInt = int.TryParse(Console.ReadLine(), out userInput);
-            if (!isInt)
+            if (!isInt || userInput < 1 || userInput > 6)
             {
-                Console.WriteLine("Invalid input, please enter a number!");
+                Console.WriteLine("Invalid input, please enter a number 1-6!(Example: 1)");
+                Console.WriteLine("press ENTER to go back to menu");
+                Console.ReadLine();
                 Console.Clear();
                 continue;
             }
@@ -137,7 +139,7 @@ class Program
         string input = Console.ReadLine() ?? "";
         while (string.IsNullOrWhiteSpace(input))
         {
-            Console.WriteLine("Invalid name input(example e.g Bob). Try again: ");
+            Console.WriteLine("Invalid name input(example Bob). Try again: ");
             input = Console.ReadLine() ?? "";
         }
         return input;
